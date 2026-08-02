@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lagomium — Websites, booking and local SEO for local businesses in Göteborg</title>
+<meta name="description" content="Lagomium builds and runs the website, booking and local search that small clinics and local businesses depend on. Everything you need online. Nothing you don't.">
+<link rel="canonical" href="https://lagomium.com/">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#14453A">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Lagomium">
+<meta property="og:title" content="Lagomium — Websites, booking and local SEO for local businesses in Göteborg">
+<meta property="og:description" content="Lagomium builds and runs the website, booking and local search that small clinics and local businesses depend on. Everything you need online. Nothing you don't.">
+<meta property="og:url" content="https://lagomium.com/">
+<meta property="og:image" content="https://lagomium.com/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Lagomium — Websites, booking and local SEO for local businesses in Göteborg">
+<meta name="twitter:description" content="Lagomium builds and runs the website, booking and local search that small clinics and local businesses depend on. Everything you need online. Nothing you don't.">
+<meta name="twitter:image" content="https://lagomium.com/og.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20width%3D%22100%22%20height%3D%22100%22%20rx%3D%2222%22%20fill%3D%22%2314453A%22%2F%3E%3Crect%20x%3D%2214%22%20y%3D%2236%22%20width%3D%2272%22%20height%3D%2228%22%20rx%3D%2214%22%20fill%3D%22none%22%20stroke%3D%22%23F1F0EA%22%20stroke-width%3D%225%22%2F%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%228%22%20fill%3D%22%23D99A2B%22%2F%3E%3C%2Fsvg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"Lagomium","description":"Lagomium builds and runs the website, booking and local search that small clinics and local businesses depend on. Everything you need online. Nothing you don't.","url":"https://lagomium.com","email":"hello@lagomium.com","telephone":"+46 76 772 85 73","image":"https://lagomium.com/og.png","address":{"@type":"PostalAddress","addressLocality":"Göteborg","addressRegion":"Västra Götaland","addressCountry":"SE"},"areaServed":"Göteborg","slogan":"Everything you need online. Nothing you don't.","knowsLanguage":["en","sv"],"makesOffer":[{"@type":"Offer","name":"Foundation","description":"A new site, built and launched."},{"@type":"Offer","name":"Care","description":"We keep it running so you don't think about it."},{"@type":"Offer","name":"Growth","description":"Care, plus the work that brings people in."}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How long does a new site take?","acceptedAnswer":{"@type":"Answer","text":"Two to three weeks from the day your content is ready. The delay is almost always photos and text, so we help you get those sorted first."}},{"@type":"Question","name":"Do I own the site?","acceptedAnswer":{"@type":"Answer","text":"Yes. The domain, the content and the code are yours. If you ever leave, we hand everything over and help you move it."}},{"@type":"Question","name":"Am I locked into a contract?","acceptedAnswer":{"@type":"Answer","text":"No. Care and Growth are month to month. Cancel whenever you like and the site stays yours."}},{"@type":"Question","name":"Can you work with the site I already have?","acceptedAnswer":{"@type":"Answer","text":"Usually, yes. If your WordPress site has good bones we improve and maintain it rather than charge you for a rebuild you don't need."}},{"@type":"Question","name":"What exactly is the AI assistant?","acceptedAnswer":{"@type":"Answer","text":"A chat widget trained on your services, prices and opening hours. It answers routine questions around the clock and passes real enquiries to you with the details already collected."}},{"@type":"Question","name":"Do you work in Swedish and English?","acceptedAnswer":{"@type":"Answer","text":"Both. Sites can be built bilingual if your customers need it."}}]}</script>
+<style>
+:root{
+  --ink:#101A16; --pine:#14453A; --pine-deep:#0E3229; --chalk:#F1F0EA;
+  --paper:#FFFFFF; --moss:#E2E7DC; --amber:#D99A2B; --line:#D8D8CE; --muted:#5A6560;
+  --f-display:'Familjen Grotesk',"Helvetica Neue",Arial,sans-serif;
+  --f-body:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  --f-mono:'JetBrains Mono',ui-monospace,"SF Mono",Menlo,monospace;
+  --r:14px; --r-lg:27px;
+  --wrap:1120px; --s:clamp(64px,9vw,116px);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--chalk);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img,svg{max-width:100%}
+h1,h2,h3{font-family:var(--f-display);font-weight:600;letter-spacing:-.028em;line-height:1.08;margin:0}
+p{margin:0 0 1em}
+a{color:inherit}
+ul{margin:0;padding:0;list-style:none}
+.wrap{width:min(var(--wrap),92%);margin-inline:auto}
+.sec{padding:var(--s) 0}
+.skip{position:absolute;left:-9999px;top:0;background:var(--ink);color:var(--chalk);padding:12px 18px;z-index:99}
+.skip:focus{left:12px;top:12px}
+:focus-visible{outline:3px solid var(--amber);outline-offset:3px;border-radius:4px}
+
+.eyebrow{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:0 0 14px}
+.eyebrow-on-dark{color:color-mix(in srgb,var(--chalk) 72%,transparent)}
+.sec-h{font-size:clamp(2rem,4vw,2.9rem);max-width:18ch}
+.sec-sub{color:var(--muted);max-width:56ch;margin-top:16px;font-size:1.05rem}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:13px 26px;border:1.5px solid transparent;border-radius:999px;font:inherit;font-weight:600;font-size:.98rem;text-decoration:none;cursor:pointer;transition:background .2s ease,color .2s ease,border-color .2s ease,transform .2s ease}
+.btn-amber{background:var(--amber);color:var(--ink);border-color:var(--amber)}
+.btn-amber:hover{background:var(--ink);color:var(--chalk);border-color:var(--ink)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn-ghost:hover{border-color:var(--ink);background:var(--paper)}
+.btn-sm{min-height:42px;padding:9px 20px;font-size:.9rem}
+.btn-full{width:100%}
+.btn:disabled{opacity:.55;cursor:not-allowed}
+
+/* ── Header ── */
+.hdr{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--chalk) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color .2s ease}
+.hdr.is-stuck{border-bottom-color:var(--line)}
+.hdr-in{display:flex;align-items:center;gap:20px;padding:16px 0}
+.brand{display:inline-flex;align-items:center;gap:11px;text-decoration:none;color:var(--pine)}
+.brand-t{font-family:var(--f-display);font-weight:700;font-size:1.32rem;letter-spacing:-.045em;color:var(--ink)}
+.mark-bubble{transition:transform .5s cubic-bezier(.34,1.4,.5,1)}
+.brand:hover .mark-bubble{transform:translateX(6px)}
+
+/* Desktop nav with scrollspy pill */
+.nav{position:relative;display:none;gap:4px;margin-left:auto;align-items:center}
+.nav-pill{position:absolute;top:50%;transform:translateY(-50%);height:34px;background:color-mix(in srgb,var(--ink) 7%,transparent);border-radius:999px;transition:left .32s cubic-bezier(.34,1.2,.64,1),width .32s cubic-bezier(.34,1.2,.64,1),opacity .22s ease;pointer-events:none;opacity:0;z-index:0}
+.nav a{position:relative;z-index:1;text-decoration:none;font-size:.95rem;color:var(--muted);padding:6px 14px;border-radius:999px}
+.nav a:hover{color:var(--ink)}
+.nav a.is-active{color:var(--ink);font-weight:500}
+.nav-cta{display:none}
+
+/* Mobile burger */
+.burger{margin-left:auto;width:48px;height:48px;display:grid;place-content:center;gap:6px;background:none;border:1.5px solid var(--line);border-radius:999px;cursor:pointer;transition:border-color .2s ease}
+.burger:hover{border-color:var(--ink)}
+.burger span{display:block;width:18px;height:1.8px;background:var(--ink);border-radius:2px;transition:transform .22s ease,opacity .22s ease}
+.burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7.8px) rotate(45deg)}
+.burger[aria-expanded="true"] span:nth-child(2){opacity:0;transform:scaleX(0)}
+.burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7.8px) rotate(-45deg)}
+
+/* Mobile nav panel — CRITICAL: override [hidden] so display:grid doesn't leak */
+.mnav[hidden]{display:none!important}
+.mnav{display:grid;gap:0;padding:0 4% 20px;border-top:1px solid var(--line);animation:slideDown .22s ease}
+@keyframes slideDown{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+.mnav a{text-decoration:none;padding:15px 4px;font-size:1.05rem;border-bottom:1px solid var(--line);color:var(--ink)}
+.mnav .btn{margin-top:14px;border-bottom:none;justify-content:center}
+
+/* ── Hero ── */
+.hero{padding:clamp(52px,8vw,96px) 0 clamp(30px,5vw,44px)}
+.hero h1{font-size:clamp(2.6rem,7.4vw,5.1rem);max-width:15ch}
+.h1-alt{color:var(--pine)}
+.lede{max-width:54ch;margin-top:26px;font-size:clamp(1.05rem,1.7vw,1.24rem);color:var(--muted)}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+
+/* Rail */
+.rail{position:relative;height:56px;margin-top:clamp(48px,7vw,76px);border:1.5px solid var(--line);border-radius:999px;background:var(--paper);overflow:hidden}
+.rail-line{position:absolute;inset:50% 26px auto;height:1px;background:var(--line);transform:translateY(-50%)}
+.rail-ticks{position:absolute;inset:0;display:flex;justify-content:space-between;padding:0 26px;align-items:center}
+.rail-ticks i{width:1.5px;height:12px;background:var(--line);border-radius:2px}
+.rail-gate{position:absolute;left:50%;top:8px;bottom:8px;width:52px;transform:translateX(-50%);border-left:1.5px solid var(--line);border-right:1.5px solid var(--line)}
+.rail-bubble{position:absolute;top:50%;left:50%;width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:50%;background:var(--amber);box-shadow:0 2px 0 rgba(0,0,0,.06) inset;transition:left .75s cubic-bezier(.32,1.24,.44,1)}
+.rail-cap{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-align:center;margin-top:16px}
+@media(prefers-reduced-motion:no-preference){
+  .rail-bubble{animation:drift 7s ease-in-out infinite}
+  @keyframes drift{0%,100%{transform:translateX(-7px)}50%{transform:translateX(7px)}}
+}
+
+/* ── Proof ── */
+.proof{padding:clamp(30px,5vw,46px) 0;border-block:1px solid var(--line)}
+.proof-in{display:grid;gap:26px}
+.proof-line{margin:0;font-size:.98rem;color:var(--muted)}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:22px}
+.fact-v{display:block;font-family:var(--f-display);font-size:1.9rem;font-weight:700;letter-spacing:-.04em;color:var(--pine)}
+.fact-l{display:block;font-size:.88rem;color:var(--muted);margin-top:4px}
+
+/* ── Idea ── */
+.idea-in{display:grid;gap:32px}
+.idea h2{font-size:clamp(1.9rem,3.6vw,2.7rem);max-width:16ch}
+.big{font-size:1.1rem;color:var(--muted);max-width:60ch}
+.pull{font-family:var(--f-display);font-size:clamp(1.3rem,2.4vw,1.75rem);font-weight:600;letter-spacing:-.03em;color:var(--ink);border-left:3px solid var(--amber);padding-left:20px;margin:28px 0 0;max-width:26ch}
+
+/* ── Cards ── */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:18px;margin-top:44px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r-lg);padding:30px 28px;transition:border-color .2s ease,transform .2s ease}
+.card:hover{border-color:var(--pine);transform:translateY(-3px)}
+.card-ic{display:inline-grid;place-content:center;width:44px;height:44px;border-radius:12px;background:var(--moss);color:var(--pine);margin-bottom:20px}
+.ic{width:21px;height:21px}
+.card h3{font-size:1.18rem;margin-bottom:10px}
+.card p{margin:0;color:var(--muted);font-size:.97rem}
+
+/* ── Audit section ── */
+.audit-box{background:var(--pine);color:var(--chalk);border-radius:var(--r-lg);padding:clamp(34px,5.5vw,64px)}
+.audit-box h2{font-size:clamp(2rem,4vw,2.9rem);color:var(--chalk)}
+.audit-sub{color:color-mix(in srgb,var(--chalk) 74%,transparent);max-width:56ch;margin-top:16px}
+
+/* URL input widget */
+.audit-input-wrap{margin:32px 0 0}
+.audit-input-row{display:flex;gap:10px;flex-wrap:wrap}
+.audit-url-input{
+  flex:1 1 220px;min-height:52px;padding:14px 18px;
+  border:1.5px solid color-mix(in srgb,var(--chalk) 22%,transparent);
+  border-radius:var(--r);
+  background:color-mix(in srgb,var(--pine-deep) 65%,transparent);
+  color:var(--chalk);font:inherit;font-size:1rem;
+  transition:border-color .2s ease;
+}
+.audit-url-input::placeholder{color:color-mix(in srgb,var(--chalk) 38%,transparent)}
+.audit-url-input:focus{border-color:var(--amber);outline:none}
+.btn-audit{min-height:52px;padding:14px 26px;white-space:nowrap}
+
+/* Error */
+.audit-error{margin-top:10px;font-size:.88rem;color:#f87171;display:none}
+.audit-error.is-visible{display:block}
+
+/* Loading */
+.audit-loading{display:none;align-items:center;gap:14px;margin-top:24px;color:color-mix(in srgb,var(--chalk) 70%,transparent);font-size:.95rem}
+.audit-loading.is-visible{display:flex}
+.spinner{width:20px;height:20px;border:2px solid color-mix(in srgb,var(--chalk) 16%,transparent);border-top-color:var(--amber);border-radius:50%;animation:spin .7s linear infinite;flex-shrink:0}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* Results panel */
+.audit-result{
+  display:none;margin-top:28px;
+  background:color-mix(in srgb,var(--pine-deep) 55%,transparent);
+  border:1px solid color-mix(in srgb,var(--chalk) 13%,transparent);
+  border-radius:var(--r-lg);padding:28px 26px;
+  animation:fadeUp .4s cubic-bezier(.4,0,.2,1);
+}
+.audit-result.is-visible{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.ar-top{display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:start}
+.ar-circle-wrap{position:relative;width:96px;height:96px;flex-shrink:0}
+.ar-circle-svg{width:96px;height:96px;transform:rotate(-90deg)}
+.ar-track{fill:none;stroke:color-mix(in srgb,var(--chalk) 8%,transparent);stroke-width:8}
+.ar-fill{fill:none;stroke-width:8;stroke-linecap:round}
+.ar-score-label{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:2px}
+.ar-grade-letter{font-family:var(--f-display);font-size:1.9rem;font-weight:700;letter-spacing:-.04em;line-height:1}
+.ar-score-num{font-family:var(--f-mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:color-mix(in srgb,var(--chalk) 55%,transparent)}
+.ar-meta-site{font-family:var(--f-mono);font-size:.75rem;color:color-mix(in srgb,var(--chalk) 55%,transparent);margin:0 0 5px;word-break:break-all}
+.ar-meta-label{font-family:var(--f-display);font-size:1.32rem;font-weight:600;letter-spacing:-.03em;color:var(--chalk);margin:0 0 12px}
+.ar-badges{display:flex;flex-wrap:wrap;gap:6px}
+.ar-badge{font-family:var(--f-mono);font-size:.65rem;letter-spacing:.09em;text-transform:uppercase;padding:4px 10px;border-radius:999px;font-weight:500;line-height:1.4}
+.ar-good{background:color-mix(in srgb,#4ade80 14%,transparent);color:#4ade80;border:1px solid color-mix(in srgb,#4ade80 28%,transparent)}
+.ar-bad{background:color-mix(in srgb,#f87171 14%,transparent);color:#f87171;border:1px solid color-mix(in srgb,#f87171 28%,transparent)}
+.ar-ok{background:color-mix(in srgb,var(--amber) 14%,transparent);color:var(--amber);border:1px solid color-mix(in srgb,var(--amber) 28%,transparent)}
+.ar-divider{height:1px;background:color-mix(in srgb,var(--chalk) 10%,transparent);margin:20px 0}
+.ar-issues-heading{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:color-mix(in srgb,var(--chalk) 45%,transparent);margin:0 0 12px}
+.ar-issue-list{display:grid;gap:7px;margin:0;padding:0;list-style:none}
+.ar-issue{display:flex;gap:9px;align-items:baseline;font-size:.9rem;color:color-mix(in srgb,var(--chalk) 80%,transparent)}
+.ar-sev{font-family:var(--f-mono);font-size:.62rem;letter-spacing:.09em;text-transform:uppercase;padding:3px 8px;border-radius:999px;flex-shrink:0;font-weight:600}
+.ar-critical{background:color-mix(in srgb,#f87171 16%,transparent);color:#f87171}
+.ar-high{background:color-mix(in srgb,#fb923c 16%,transparent);color:#fb923c}
+.ar-medium{background:color-mix(in srgb,var(--amber) 16%,transparent);color:var(--amber)}
+.ar-low{background:color-mix(in srgb,var(--chalk) 9%,transparent);color:color-mix(in srgb,var(--chalk) 55%,transparent)}
+.ar-more{font-size:.85rem;color:color-mix(in srgb,var(--chalk) 45%,transparent);padding-top:4px}
+.ar-cta{margin-top:22px;padding-top:20px;border-top:1px solid color-mix(in srgb,var(--chalk) 10%,transparent);display:flex;flex-direction:column;gap:14px;align-items:flex-start}
+.ar-cta p{margin:0;color:color-mix(in srgb,var(--chalk) 78%,transparent);font-size:.97rem;max-width:52ch}
+.ar-cta strong{color:var(--chalk)}
+
+/* Existing audit tabs (moved below results) */
+.audit-sep{border-top:1px solid color-mix(in srgb,var(--chalk) 14%,transparent);margin-top:42px;padding-top:38px}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 22px}
+.tab{min-height:44px;padding:10px 20px;border-radius:999px;border:1.5px solid color-mix(in srgb,var(--chalk) 26%,transparent);background:transparent;color:var(--chalk);font:inherit;font-size:.92rem;font-weight:500;cursor:pointer;transition:background .2s ease,color .2s ease,border-color .2s ease}
+.tab:hover{border-color:var(--amber)}
+.tab.is-on{background:var(--amber);color:var(--ink);border-color:var(--amber);font-weight:600}
+.rail-dark{background:var(--pine-deep);border-color:color-mix(in srgb,var(--chalk) 20%,transparent)}
+.rail-dark .rail-line,.rail-dark .rail-ticks i{background:color-mix(in srgb,var(--chalk) 22%,transparent)}
+.rail-dark .rail-gate{background:none;border-color:color-mix(in srgb,var(--chalk) 30%,transparent)}
+.rail-dark .rail-bubble{animation:none}
+.panels{margin-top:22px;min-height:100px}
+.panel h3{font-size:1.3rem;color:var(--amber);margin-bottom:8px}
+.panel p{color:color-mix(in srgb,var(--chalk) 80%,transparent);max-width:62ch;margin:0}
+.audit-foot{display:grid;gap:26px;margin-top:36px;padding-top:28px;border-top:1px solid color-mix(in srgb,var(--chalk) 18%,transparent)}
+.checks{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.checks li{position:relative;padding-left:24px;font-size:.95rem;color:color-mix(in srgb,var(--chalk) 84%,transparent)}
+.checks li::before{content:"";position:absolute;left:0;top:.6em;width:9px;height:9px;border-radius:50%;background:var(--amber)}
+.audit-deliv{margin:0;font-size:.95rem;color:color-mix(in srgb,var(--chalk) 60%,transparent);max-width:52ch}
+
+/* ── Pricing ── */
+.tiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(276px,1fr));gap:18px;margin-top:44px}
+.tier{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:var(--r-lg);padding:34px 30px;display:flex;flex-direction:column}
+.tier.is-featured{border:1.5px solid var(--pine);box-shadow:0 18px 40px -28px rgba(16,26,22,.5)}
+.tier-flag{position:absolute;top:-13px;left:30px;background:var(--amber);color:var(--ink);font-family:var(--f-mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;padding:6px 13px;border-radius:999px}
+.tier h3{font-size:1.32rem}
+.tier-blurb{color:var(--muted);font-size:.95rem;margin:8px 0 0}
+.tier-price{font-family:var(--f-display);font-size:1.85rem;font-weight:700;letter-spacing:-.04em;margin:22px 0 24px;color:var(--pine)}
+.tier-per{display:block;font-family:var(--f-mono);font-size:.72rem;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:5px}
+.tier ul{display:grid;gap:11px;margin-bottom:28px}
+.tier ul li{position:relative;padding-left:24px;font-size:.95rem;color:var(--muted)}
+.tier ul li::before{content:"";position:absolute;left:2px;top:.52em;width:9px;height:2px;background:var(--amber);border-radius:2px}
+.tier .btn{margin-top:auto}
+.price-note{margin-top:26px;font-size:.92rem;color:var(--muted);text-align:center}
+
+/* ── Tags ── */
+.tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:36px}
+.tag{background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:11px 20px;font-size:.94rem}
+
+/* ── FAQ ── */
+.faq-in{display:grid;gap:32px}
+.qas{display:grid}
+.qa{border-top:1px solid var(--line)}
+.qa:last-child{border-bottom:1px solid var(--line)}
+.qa summary{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:56px;padding:20px 0;cursor:pointer;list-style:none;font-family:var(--f-display);font-size:1.08rem;font-weight:500;letter-spacing:-.02em}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary svg{flex:0 0 20px;width:20px;height:20px;color:var(--pine);transition:transform .25s ease}
+.qa[open] summary svg{transform:rotate(45deg)}
+.qa p{margin:-4px 0 22px;color:var(--muted);max-width:64ch;font-size:.98rem}
+
+/* ── Contact ── */
+.contact-box{background:var(--pine);color:var(--chalk);border-radius:var(--r-lg);padding:clamp(34px,5.5vw,60px);display:grid;gap:36px}
+.contact-box h2{font-size:clamp(1.9rem,3.6vw,2.6rem);color:var(--chalk);max-width:16ch}
+.contact-copy p{color:color-mix(in srgb,var(--chalk) 76%,transparent);max-width:44ch}
+.contact-alt a{color:var(--chalk);text-decoration-color:var(--amber);text-decoration-thickness:2px;text-underline-offset:4px}
+.form{display:grid;gap:16px;align-content:start}
+.f-row{display:grid;gap:7px}
+.f-row label{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;color:color-mix(in srgb,var(--chalk) 70%,transparent)}
+.f-row input,.f-row textarea{width:100%;min-height:48px;padding:13px 15px;border:1.5px solid color-mix(in srgb,var(--chalk) 24%,transparent);border-radius:var(--r);background:color-mix(in srgb,var(--pine-deep) 70%,transparent);color:var(--chalk);font:inherit;font-size:1rem}
+.f-row textarea{min-height:104px;resize:vertical}
+.f-row input::placeholder{color:color-mix(in srgb,var(--chalk) 42%,transparent)}
+.f-row input:focus,.f-row textarea:focus{border-color:var(--amber);outline:none}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+/* ── Footer ── */
+.ftr{border-top:1px solid var(--line);padding:52px 0 40px}
+.ftr-in{display:grid;gap:26px}
+.ftr-tag{margin:14px 0 0;color:var(--muted);font-size:.95rem;max-width:34ch}
+.ftr-nav{display:flex;flex-wrap:wrap;gap:22px}
+.ftr-nav a{text-decoration:none;font-size:.93rem;color:var(--muted)}
+.ftr-nav a:hover{color:var(--ink)}
+.ftr-legal{margin:0;font-family:var(--f-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+
+/* ── Responsive ── */
+@media(min-width:760px){
+  .proof-in{grid-template-columns:1fr 1.5fr;align-items:center;gap:44px}
+  .idea-in{grid-template-columns:1fr 1.2fr;gap:60px}
+  .faq-in{grid-template-columns:.8fr 1.4fr;gap:56px;align-items:start}
+  .audit-foot{grid-template-columns:1.6fr 1fr;gap:44px}
+  .contact-box{grid-template-columns:1fr 1fr;gap:52px;align-items:start}
+  .ftr-in{grid-template-columns:1.4fr 1fr auto;align-items:end}
+  .ar-top{gap:28px}
+}
+@media(min-width:980px){
+  .nav,.nav-cta{display:flex}
+  .burger,.mnav{display:none!important}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="hdr" id="hdr">
+<div class="wrap hdr-in">
+  <a class="brand" href="#top" aria-label="Lagomium home">
+    <svg class="mark" width="30" height="13" viewBox="0 0 100 44" aria-hidden="true" focusable="false"><rect x="1.5" y="1.5" width="97" height="41" rx="20.5" fill="none" stroke="currentColor" stroke-width="3"/><path d="M38 8v28M62 8v28" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".45"/><circle class="mark-bubble" cx="50" cy="22" r="9.5" fill="var(--amber)"/></svg>
+    <span class="brand-t">Lagomium</span>
+  </a>
+  <nav class="nav" aria-label="Main">
+    <span class="nav-pill" aria-hidden="true"></span>
+    <a href="#services">What we do</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#audit">Free audit</a>
+    <a href="#faq">Questions</a>
+  </nav>
+  <a class="btn btn-amber btn-sm nav-cta" href="#audit">Audit my site</a>
+  <button class="burger" type="button" aria-expanded="false" aria-controls="mnav" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</div>
+<div class="mnav" id="mnav" hidden>
+  <a href="#services">What we do</a>
+  <a href="#pricing">Pricing</a>
+  <a href="#audit">Free audit</a>
+  <a href="#faq">Questions</a>
+  <a class="btn btn-amber" href="#audit">Audit my site — free</a>
+</div>
+</header>
+
+<main id="main">
+<span id="top"></span>
+
+<section class="hero">
+<div class="wrap">
+  <p class="eyebrow">Web studio · Göteborg</p>
+  <h1>Websites that keep<br><span class="h1-alt">local businesses booked.</span></h1>
+  <p class="lede">We build the site, connect your booking, handle local search, and answer the enquiries you miss. One partner, one monthly fee, no agency theatre.</p>
+  <div class="cta-row">
+    <a class="btn btn-amber" href="#audit">Audit my site — free</a>
+    <a class="btn btn-ghost" href="#services">See what's included</a>
+  </div>
+  <div class="rail" aria-hidden="true">
+    <div class="rail-line"></div>
+    <div class="rail-ticks"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="rail-gate"></div>
+    <div class="rail-bubble" id="heroBubble"></div>
+  </div>
+  <p class="rail-cap">lagom · not too much, not too little</p>
+
+  <div style="margin-top:clamp(48px,7vw,76px);border-radius:var(--r-lg);overflow:hidden;background:var(--paper);border:1px solid var(--line)">
+    <video width="100%" height="auto" autoplay muted playsinline loop style="display:block;background:var(--moss)">
+      <source src="/lagomium-nothing-you-dont.mp4" type="video/mp4">
+    </video>
+  </div>
+</div>
+</section>
+
+<section class="proof">
+<div class="wrap proof-in">
+  <p class="proof-line">Currently looking after Marzi Skincare &amp; Laser Clinic — Kelowna, BC.</p>
+  <div class="facts">
+    <div class="fact"><span class="fact-v">90+</span><span class="fact-l">PageSpeed on every site we ship</span></div>
+    <div class="fact"><span class="fact-v">1 day</span><span class="fact-l">Reply time on support requests</span></div>
+    <div class="fact"><span class="fact-v">0</span><span class="fact-l">Lock-in. Cancel any month</span></div>
+  </div>
+</div>
+</section>
+
+<section class="sec idea">
+<div class="wrap idea-in">
+  <div>
+    <p class="eyebrow">The idea</p>
+    <h2>Lagom is a measurement, not a mood.</h2>
+  </div>
+  <div>
+    <p class="big">It means not too little, not too much — the right amount. Small business websites usually fail in one of two directions: bloated with plugins nobody uses, or missing the basics that actually bring customers through the door. Our whole job is finding the line and building exactly to it.</p>
+    <p class="pull">Everything you need online. Nothing you don't.</p>
+  </div>
+</div>
+</section>
+
+<section class="sec" id="services">
+<div class="wrap">
+  <p class="eyebrow">What we do</p>
+  <h2 class="sec-h">One partner for the whole thing</h2>
+  <p class="sec-sub">Six pieces. Together they are a working digital presence — not a list of invoices.</p>
+  <div class="cards">
+    <article class="card"><span class="card-ic"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4.5 13.5H11l-1 8.5 8.5-11.5H12z"/></svg></span><h3>Websites</h3><p>Fast, clear sites that load in under a second and read properly on a phone. Built to be found and to convert, not to win awards.</p></article>
+    <article class="card"><span class="card-ic"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M3 10h18M8 3v4M16 3v4"/><path d="m9.5 15.5 1.8 1.8 3.4-3.6"/></svg></span><h3>Booking &amp; forms</h3><p>Your booking system wired into the site so it actually gets used. Enquiry forms that land in your inbox, not a spam folder.</p></article>
+    <article class="card"><span class="card-ic"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg></span><h3>Local SEO</h3><p>Google Business Profile, local listings, and the on-page work that puts you in the map results when someone nearby searches.</p></article>
+    <article class="card"><span class="card-ic"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16a1.5 1.5 0 0 1 1.5 1.5v9A1.5 1.5 0 0 1 20 17h-7l-5 4v-4H4a1.5 1.5 0 0 1-1.5-1.5v-9A1.5 1.5 0 0 1 4 5Z"/><path d="M8 10h.01M12 10h.01M16 10h.01"/></svg></span><h3>AI assistant</h3><p>A receptionist that knows your services, prices and hours. Answers the routine questions at 22:00 and captures the ones ready to book.</p></article>
+    <article class="card"><span class="card-ic"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><h3>Email &amp; hosting</h3><p>A proper address at your own domain, on hosting that stays up. Set up once, then it is simply not your problem again.</p></article>
+    <article class="card"><span class="card-ic"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5 20 6v6c0 5-3.4 8.4-8 9.5C7.4 20.4 4 17 4 12V6Z"/><path d="m9 12 2.2 2.2L15.5 10"/></svg></span><h3>Lagom Care</h3><p>Updates, backups, security, small edits whenever you need them, and a one-page monthly report you can read in two minutes.</p></article>
+  </div>
+</div>
+</section>
+
+<!-- ── Audit section with inline URL auditor ── -->
+<section class="sec audit" id="audit">
+<div class="wrap">
+<div class="audit-box">
+  <p class="eyebrow eyebrow-on-dark">Start here</p>
+  <h2>The Lagom Audit</h2>
+  <p class="audit-sub">Enter your website below. We'll scan it for speed, SEO, mobile readiness and more — right here, in about 10 seconds.</p>
+
+  <!-- URL input -->
+  <div class="audit-input-wrap">
+    <label for="auditUrl" class="eyebrow eyebrow-on-dark" style="display:block;margin-bottom:10px">Your website URL</label>
+    <div class="audit-input-row">
+      <input
+        type="url"
+        id="auditUrl"
+        class="audit-url-input"
+        placeholder="https://yoursite.com"
+        autocomplete="url"
+        inputmode="url"
+        spellcheck="false"
+      >
+      <button class="btn btn-amber btn-audit" id="auditBtn" type="button">
+        Audit my site
+      </button>
+    </div>
+    <p class="audit-error" id="auditError" role="alert"></p>
+  </div>
+
+  <!-- Loading state -->
+  <div class="audit-loading" id="auditLoading" aria-live="polite">
+    <div class="spinner" aria-hidden="true"></div>
+    <span>Scanning <strong id="auditLoadingUrl"></strong>…</span>
+  </div>
+
+  <!-- Results panel -->
+  <div class="audit-result" id="auditResult" aria-live="polite" tabindex="-1"></div>
+
+  <!-- Divider: what we measure -->
+  <div class="audit-sep">
+    <p class="eyebrow eyebrow-on-dark">What we measure</p>
+    <div class="tabs" role="tablist" aria-label="Website balance">
+      <button class="tab" type="button" role="tab" aria-selected="false" aria-controls="state-little" data-pos="12" data-key="little">Too little</button>
+      <button class="tab is-on" type="button" role="tab" aria-selected="true" aria-controls="state-right" data-pos="50" data-key="right">Just right</button>
+      <button class="tab" type="button" role="tab" aria-selected="false" aria-controls="state-much" data-pos="88" data-key="much">Too much</button>
+    </div>
+    <div class="rail rail-dark">
+      <div class="rail-line"></div>
+      <div class="rail-ticks"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="rail-gate"></div>
+      <div class="rail-bubble" id="auditBubble"></div>
+    </div>
+    <div class="panels">
+      <div class="panel" id="state-little" role="tabpanel" hidden><h3>Too little</h3><p>No booking link, thin service pages, missing business profile, nothing to build trust. Customers arrive, find no answer, and leave.</p></div>
+      <div class="panel is-on" id="state-right" role="tabpanel"><h3>Just right</h3><p>Loads instantly, says what you do and what it costs, one obvious way to book, and it appears when someone nearby searches. That is the whole job.</p></div>
+      <div class="panel" id="state-much" role="tabpanel" hidden><h3>Too much</h3><p>Forty plugins, three chat widgets, a sliding banner nobody reads, and a five-second load. You are paying for weight that costs you customers.</p></div>
+    </div>
+    <div class="audit-foot">
+      <ul class="checks">
+        <li>Load speed on a real phone</li>
+        <li>Mobile layout and tap targets</li>
+        <li>Local search visibility</li>
+        <li>How easy it is to book</li>
+        <li>Trust signals and reviews</li>
+        <li>Content clarity</li>
+      </ul>
+      <p class="audit-deliv">You get a short PDF and a 20-minute call. No pitch deck, no obligation, no follow-up sequence.</p>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+
+<section class="sec" id="pricing">
+<div class="wrap">
+  <p class="eyebrow">Pricing</p>
+  <h2 class="sec-h">Plain numbers</h2>
+  <p class="sec-sub">No quotes-on-request. Prices exclude VAT.</p>
+  <div class="tiers">
+    <article class="tier"><h3>Foundation</h3><p class="tier-blurb">A new site, built and launched.</p><p class="tier-price">från 14 900 kr<span class="tier-per">one-time</span></p><ul><li>Up to 6 pages</li><li>Booking system connected</li><li>Your own domain and email</li><li>Local SEO groundwork</li><li>Live in 2–3 weeks</li></ul><a class="btn btn-ghost" href="#contact">Start here</a></article>
+    <article class="tier is-featured"><span class="tier-flag">Most chosen</span><h3>Care</h3><p class="tier-blurb">We keep it running so you don't think about it.</p><p class="tier-price">990 kr<span class="tier-per">per month</span></p><ul><li>Hosting, backups, security</li><li>Professional email</li><li>Updates and monitoring</li><li>Small edits on request</li><li>One-page monthly report</li></ul><a class="btn btn-amber" href="#contact">Get started</a></article>
+    <article class="tier"><h3>Growth</h3><p class="tier-blurb">Care, plus the work that brings people in.</p><p class="tier-price">2 490 kr<span class="tier-per">per month</span></p><ul><li>Everything in Care</li><li>Ongoing local SEO</li><li>Google Business Profile managed</li><li>AI assistant included</li><li>Quarterly strategy call</li></ul><a class="btn btn-ghost" href="#contact">Talk it through</a></article>
+  </div>
+  <p class="price-note">Not sure which? The audit is free and ends with a straight recommendation.</p>
+</div>
+</section>
+
+<section class="sec">
+<div class="wrap">
+  <p class="eyebrow">Who we build for</p>
+  <h2 class="sec-h">Local businesses that live on bookings</h2>
+  <ul class="tags">
+    <li class="tag">Laser &amp; beauty clinics</li>
+    <li class="tag">Dental practices</li>
+    <li class="tag">Physiotherapy &amp; chiropractic</li>
+    <li class="tag">Salons &amp; barbers</li>
+    <li class="tag">Restaurants &amp; cafés</li>
+    <li class="tag">Electricians</li>
+    <li class="tag">Plumbers</li>
+    <li class="tag">Trades &amp; contractors</li>
+  </ul>
+</div>
+</section>
+
+<section class="sec" id="faq">
+<div class="wrap faq-in">
+  <div>
+    <p class="eyebrow">Questions</p>
+    <h2 class="sec-h">The things people ask first</h2>
+  </div>
+  <div class="qas">
+    <details class="qa"><summary><span>How long does a new site take?</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></summary><p>Two to three weeks from the day your content is ready. The delay is almost always photos and text, so we help you get those sorted first.</p></details>
+    <details class="qa"><summary><span>Do I own the site?</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></summary><p>Yes. The domain, the content and the code are yours. If you ever leave, we hand everything over and help you move it.</p></details>
+    <details class="qa"><summary><span>Am I locked into a contract?</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></summary><p>No. Care and Growth are month to month. Cancel whenever you like and the site stays yours.</p></details>
+    <details class="qa"><summary><span>Can you work with the site I already have?</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></summary><p>Usually, yes. If your WordPress site has good bones we improve and maintain it rather than charge you for a rebuild you don't need.</p></details>
+    <details class="qa"><summary><span>What exactly is the AI assistant?</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></summary><p>A chat widget trained on your services, prices and opening hours. It answers routine questions around the clock and passes real enquiries to you with the details already collected.</p></details>
+    <details class="qa"><summary><span>Do you work in Swedish and English?</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></summary><p>Both. Sites can be built bilingual if your customers need it.</p></details>
+  </div>
+</div>
+</section>
+
+<section class="sec" id="contact">
+<div class="wrap">
+<div class="contact-box">
+  <div class="contact-copy">
+    <p class="eyebrow eyebrow-on-dark">Next step</p>
+    <h2>Let's see where your site actually sits.</h2>
+    <p>Send the address and a sentence about the business. You'll hear back within a business day.</p>
+    <p class="contact-alt">Prefer email? <a href="mailto:mosijab@gmail.com">mosijab@gmail.com</a></p>
+  </div>
+  <form class="form" method="POST" action="mailto:hello@lagomium.com" enctype="text/plain">
+    <div class="f-row"><label for="f-name">Your name</label><input id="f-name" name="name" type="text" autocomplete="name" required></div>
+    <div class="f-row"><label for="f-biz">Business name</label><input id="f-biz" name="business" type="text" autocomplete="organization"></div>
+    <div class="f-row"><label for="f-mail">Email</label><input id="f-mail" name="email" type="email" autocomplete="email" required></div>
+    <div class="f-row"><label for="f-web">Current website (if you have one)</label><input id="f-web" name="website" type="url" placeholder="https://"></div>
+    <div class="f-row"><label for="f-msg">What's not working right now?</label><textarea id="f-msg" name="message" rows="4"></textarea></div>
+    <div class="hp" aria-hidden="true"><label for="f-hp">Leave this empty</label><input id="f-hp" name="_gotcha" type="text" tabindex="-1" autocomplete="off"></div>
+    <button class="btn btn-amber btn-full" type="submit">Request the free audit</button>
+  </form>
+</div>
+</div>
+</section>
+</main>
+
+<footer class="ftr">
+<div class="wrap ftr-in">
+  <div class="ftr-brand">
+    <a class="brand" href="#top">
+      <svg class="mark" width="28" height="12" viewBox="0 0 100 44" aria-hidden="true"><rect x="1.5" y="1.5" width="97" height="41" rx="20.5" fill="none" stroke="currentColor" stroke-width="3"/><path d="M38 8v28M62 8v28" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".45"/><circle class="mark-bubble" cx="50" cy="22" r="9.5" fill="var(--amber)"/></svg>
+      <span class="brand-t">Lagomium</span>
+    </a>
+    <p class="ftr-tag">Everything you need online. Nothing you don't.</p>
+  </div>
+  <nav class="ftr-nav" aria-label="Footer">
+    <a href="#services">What we do</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#audit">The Audit</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <p class="ftr-legal">© 2026 Lagomium · Göteborg, Sverige</p>
+</div>
+</footer>
+
+<script>
+(function(){
+  // ── Sticky header ──────────────────────────────────────────────────────────
+  var hdr = document.getElementById('hdr');
+  function onScroll(){ hdr.classList.toggle('is-stuck', window.scrollY > 8); }
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // ── Mobile burger ──────────────────────────────────────────────────────────
+  var burger = document.querySelector('.burger');
+  var mnav   = document.getElementById('mnav');
+  if (burger && mnav) {
+    burger.addEventListener('click', function(){
+      var open = burger.getAttribute('aria-expanded') === 'true';
+      burger.setAttribute('aria-expanded', String(!open));
+      burger.setAttribute('aria-label', open ? 'Open menu' : 'Close menu');
+      mnav.hidden = open;
+    });
+    mnav.addEventListener('click', function(e){
+      if (e.target.tagName === 'A') {
+        burger.setAttribute('aria-expanded', 'false');
+        burger.setAttribute('aria-label', 'Open menu');
+        mnav.hidden = true;
+      }
+    });
+  }
+
+  // ── Scrollspy glass pill ───────────────────────────────────────────────────
+  var pill     = document.querySelector('.nav-pill');
+  var navEl    = document.querySelector('.nav');
+  var navLinks = document.querySelectorAll('.nav a[href^="#"]');
+
+  function movePill(link) {
+    if (!pill || !navEl || !link) return;
+    var nr = navEl.getBoundingClientRect();
+    var lr = link.getBoundingClientRect();
+    pill.style.left  = (lr.left - nr.left - 8) + 'px';
+    pill.style.width = (lr.width + 16) + 'px';
+    pill.style.opacity = '1';
+    navLinks.forEach(function(l){ l.classList.toggle('is-active', l === link); });
+  }
+
+  var sectionIds = ['services', 'pricing', 'audit', 'faq', 'contact'];
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e){
+      if (e.isIntersecting) {
+        var link = document.querySelector('.nav a[href="#' + e.target.id + '"]');
+        if (link) movePill(link);
+      }
+    });
+  }, { rootMargin: '-20% 0px -68% 0px' });
+
+  sectionIds.forEach(function(id){
+    var el = document.getElementById(id);
+    if (el) io.observe(el);
+  });
+
+  // ── Audit tab widget ───────────────────────────────────────────────────────
+  var tabs   = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+  var bubble = document.getElementById('auditBubble');
+  var panels = Array.prototype.slice.call(document.querySelectorAll('.panel'));
+
+  function setState(tab) {
+    tabs.forEach(function(t){
+      t.classList.toggle('is-on', t === tab);
+      t.setAttribute('aria-selected', String(t === tab));
+    });
+    if (bubble) bubble.style.left = tab.getAttribute('data-pos') + '%';
+    var key = tab.getAttribute('data-key');
+    panels.forEach(function(p){ var on = p.id === 'state-' + key; p.classList.toggle('is-on', on); p.hidden = !on; });
+  }
+
+  tabs.forEach(function(t){
+    t.addEventListener('click', function(){ setState(t); });
+    t.addEventListener('keydown', function(e){
+      var i = tabs.indexOf(t), n = null;
+      if (e.key === 'ArrowRight') n = tabs[(i + 1) % tabs.length];
+      if (e.key === 'ArrowLeft')  n = tabs[(i - 1 + tabs.length) % tabs.length];
+      if (n) { e.preventDefault(); n.focus(); setState(n); }
+    });
+  });
+
+  // ── Inline URL auditor ─────────────────────────────────────────────────────
+  var urlInput  = document.getElementById('auditUrl');
+  var auditBtn  = document.getElementById('auditBtn');
+  var loadingEl = document.getElementById('auditLoading');
+  var loadingUrlEl = document.getElementById('auditLoadingUrl');
+  var resultEl  = document.getElementById('auditResult');
+  var errorEl   = document.getElementById('auditError');
+
+  function esc(s) {
+    return String(s || '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  function scoreColor(s) {
+    return s >= 80 ? '#4ade80' : s >= 60 ? '#D99A2B' : '#f87171';
+  }
+
+  function renderResults(data) {
+    var score      = (data.healthScore && data.healthScore.score != null) ? data.healthScore.score : 0;
+    var grade      = (data.healthScore && data.healthScore.grade)  ? data.healthScore.grade  : 'F';
+    var gradeLabel = (data.healthScore && data.healthScore.label)  ? data.healthScore.label  : 'Critical Issues';
+    var issues     = data.issues || [];
+    var circ       = 326.73; // 2π × 52
+    var color      = scoreColor(score);
+
+    var hostname = data.url;
+    try { hostname = new URL(data.url).hostname; } catch(e) {}
+
+    // Signal badges
+    var badges = [
+      data.isHttps   ? ['good','HTTPS']        : ['bad','No HTTPS'],
+      data.hasViewport ? ['good','Mobile OK']  : ['bad','No viewport'],
+      (data.schema && data.schema.found) ? ['good','Schema'] : ['ok','No schema'],
+    ];
+    if (data.cms && data.cms !== 'Custom / Unknown') badges.push(['ok', esc(data.cms)]);
+
+    var badgeHtml = badges.map(function(b){
+      return '<span class="ar-badge ar-' + b[0] + '">' + esc(b[1]) + '</span>';
+    }).join('');
+
+    // Issues list
+    var issueHtml;
+    if (!issues.length) {
+      issueHtml = '<p style="color:#4ade80;font-size:.9rem;margin:0">✓ No critical issues found — good baseline.</p>';
+    } else {
+      var rows = issues.slice(0, 7).map(function(i){
+        var sev = (i.severity || '').toLowerCase();
+        return '<li class="ar-issue"><span class="ar-sev ar-' + sev + '">' + esc(i.severity) + '</span><span>' + esc(i.message) + '</span></li>';
+      }).join('');
+      var more = issues.length > 7 ? '<li class="ar-more">+' + (issues.length - 7) + ' more issues in the full report</li>' : '';
+      issueHtml = '<p class="ar-issues-heading">Found ' + issues.length + ' issue' + (issues.length !== 1 ? 's' : '') + '</p>'
+        + '<ul class="ar-issue-list">' + rows + more + '</ul>';
+    }
+
+    // Performance snippet
+    var perfHtml = '';
+    if (data.performance && !data.performance.error && data.performance.score != null) {
+      var ps = data.performance.score;
+      perfHtml = '<span class="ar-badge ar-' + (ps >= 75 ? 'good' : ps >= 50 ? 'ok' : 'bad') + '">Speed ' + ps + '/100</span>';
+    }
+
+    resultEl.innerHTML =
+      '<div class="ar-top">'
+      + '<div class="ar-circle-wrap">'
+      +   '<svg class="ar-circle-svg" viewBox="0 0 120 120" aria-label="Score ' + score + ' out of 100">'
+      +     '<circle class="ar-track" cx="60" cy="60" r="52"/>'
+      +     '<circle class="ar-fill" cx="60" cy="60" r="52"'
+      +       ' stroke="' + color + '"'
+      +       ' stroke-dasharray="' + circ + '"'
+      +       ' stroke-dashoffset="' + circ + '"'
+      +     '/>'
+      +   '</svg>'
+      +   '<div class="ar-score-label">'
+      +     '<span class="ar-grade-letter" style="color:' + color + '">' + esc(grade) + '</span>'
+      +     '<span class="ar-score-num">' + score + '/100</span>'
+      +   '</div>'
+      + '</div>'
+      + '<div>'
+      +   '<p class="ar-meta-site">' + esc(hostname) + '</p>'
+      +   '<p class="ar-meta-label">' + esc(gradeLabel) + '</p>'
+      +   '<div class="ar-badges">' + badgeHtml + perfHtml + '</div>'
+      + '</div>'
+      + '</div>'
+      + '<div class="ar-divider"></div>'
+      + '<div>' + issueHtml + '</div>'
+      + '<div class="ar-cta">'
+      +   '<p>This is what\'s holding <strong>' + esc(hostname) + '</strong> back.'
+      +   (issues.length > 0 ? ' We\'d tackle the top issues in the first week.' : ' There\'s still room to grow.')
+      +   '</p>'
+      +   '<a class="btn btn-amber" href="#contact">Fix it with Lagomium →</a>'
+      + '</div>';
+
+    resultEl.classList.add('is-visible');
+    resultEl.focus();
+
+    // Animate score ring after paint
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){
+        var fill = resultEl.querySelector('.ar-fill');
+        if (fill) {
+          fill.style.transition = 'stroke-dashoffset .95s cubic-bezier(.4,0,.2,1)';
+          fill.style.strokeDashoffset = String(circ * (1 - score / 100));
+        }
+      });
+    });
+  }
+
+  function setLoading(on, urlText) {
+    if (on) {
+      loadingEl.classList.add('is-visible');
+      if (loadingUrlEl) loadingUrlEl.textContent = urlText || '';
+    } else {
+      loadingEl.classList.remove('is-visible');
+    }
+  }
+
+  async function runAudit() {
+    var raw = (urlInput.value || '').trim();
+    if (!raw) { urlInput.focus(); return; }
+    var url = /^https?:\/\//i.test(raw) ? raw : 'https://' + raw;
+
+    var hostname = raw;
+    try { hostname = new URL(url).hostname; } catch(e) {}
+
+    // Reset state
+    errorEl.textContent = '';
+    errorEl.classList.remove('is-visible');
+    resultEl.classList.remove('is-visible');
+    setLoading(true, hostname);
+    auditBtn.disabled = true;
+    auditBtn.textContent = 'Scanning…';
+
+    try {
+      var res = await fetch('/api/audit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url: url }),
+      });
+      var data = await res.json();
+      if (data.error) throw new Error(data.error);
+      if (data.scrapeStatus && data.scrapeStatus !== 'Success') throw new Error(data.scrapeStatus);
+      renderResults(data);
+      // Smooth scroll to results
+      setTimeout(function(){
+        resultEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }, 80);
+    } catch(e) {
+      errorEl.textContent = e.message || 'Something went wrong — is the URL correct?';
+      errorEl.classList.add('is-visible');
+    } finally {
+      setLoading(false);
+      auditBtn.disabled = false;
+      auditBtn.textContent = 'Audit my site';
+    }
+  }
+
+  if (auditBtn) auditBtn.addEventListener('click', runAudit);
+  if (urlInput) urlInput.addEventListener('keydown', function(e){ if (e.key === 'Enter') runAudit(); });
+
+})();
+</script>
+</body>
+</html>

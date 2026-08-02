@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free SEO Audit — Lagomium</title>
+  <meta name="description" content="Instant, free SEO audit for your website. See what's holding back your rankings and get a clear action list — no signup required.">
+  <style>
+    :root {
+      --green:          #2D5651;
+      --green-dark:     #1f3e3a;
+      --green-light:    #3d6e68;
+      --green-muted:    #e8efee;
+      --bronze:         #B5936B;
+      --bronze-light:   #f5ede4;
+      --porcelain:      #FAF7F2;
+      --porcelain-dark: #F0EAE0;
+      --text:           #1a1a1a;
+      --muted:          #6b7280;
+      --border:         #ddd6cc;
+      --red:            #b91c1c;
+      --orange:         #c2410c;
+      --yellow:         #92400e;
+      --blue:           #1e40af;
+      --shadow:         0 1px 8px rgba(45,86,81,0.07), 0 0 0 1px rgba(45,86,81,0.05);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: var(--porcelain);
+      color: var(--text);
+      min-height: 100vh;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* ── Header ── */
+    .header {
+      background: var(--green);
+      color: white;
+      padding: 52px 24px 48px;
+      text-align: center;
+    }
+    .header-eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0.6;
+      margin-bottom: 12px;
+    }
+    .header h1 {
+      font-size: clamp(1.7rem, 4vw, 2.5rem);
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+    }
+    .header p {
+      margin-top: 10px;
+      opacity: 0.75;
+      font-size: 0.95rem;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .header-brand {
+      margin-top: 20px;
+      font-size: 0.78rem;
+      opacity: 0.5;
+    }
+    .header-brand a { color: var(--bronze); text-decoration: none; opacity: 1; }
+
+    /* ── Form ── */
+    .form-outer {
+      max-width: 680px;
+      margin: 36px auto 0;
+      padding: 0 20px;
+    }
+    .form-card {
+      background: white;
+      border-radius: 14px;
+      padding: 28px 28px 24px;
+      box-shadow: var(--shadow);
+    }
+    .form-row {
+      display: flex;
+      gap: 10px;
+      align-items: flex-end;
+    }
+    .fg { flex: 1; }
+    .fg label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .fg input {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 9px;
+      font-size: 0.95rem;
+      background: var(--porcelain);
+      color: var(--text);
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .fg input:focus { outline: none; border-color: var(--green); background: white; }
+    .fg input::placeholder { color: #bbb; }
+
+    .btn {
+      padding: 11px 22px;
+      border-radius: 9px;
+      border: none;
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s;
+      white-space: nowrap;
+    }
+    .btn-green { background: var(--green); color: white; }
+    .btn-green:hover { background: var(--green-dark); }
+    .btn-green:disabled { background: #9ca3af; cursor: not-allowed; }
+    .btn-ghost {
+      background: var(--porcelain-dark);
+      color: var(--green);
+      border: 1.5px solid var(--border);
+    }
+    .btn-ghost:hover { background: var(--border); }
+
+    .adv-toggle {
+      margin-top: 14px;
+      font-size: 0.78rem;
+      color: var(--muted);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      user-select: none;
+    }
+    .adv-toggle:hover { color: var(--green); }
+    .adv-panel { display: none; padding-top: 14px; }
+    .adv-panel.open { display: block; }
+    .adv-note { font-size: 0.73rem; color: var(--muted); margin-top: 5px; }
+
+    /* ── Results wrapper ── */
+    .results-outer {
+      max-width: 800px;
+      margin: 28px auto 80px;
+      padding: 0 20px;
+    }
+
+    /* ── Loading ── */
+    .loading {
+      text-align: center;
+      padding: 70px 20px;
+    }
+    .spinner {
+      width: 44px; height: 44px;
+      border: 3px solid var(--border);
+      border-top-color: var(--green);
+      border-radius: 50%;
+      animation: spin 0.75s linear infinite;
+      margin: 0 auto 18px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .loading-url { font-size: 0.82rem; color: var(--muted); margin-top: 6px; }
+
+    /* ── Score card ── */
+    .score-card {
+      background: white;
+      border-radius: 14px;
+      padding: 26px 28px;
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+    .grade-ring {
+      width: 88px; height: 88px;
+      border-radius: 50%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      font-weight: 800; flex-shrink: 0;
+    }
+    .grade-ring .g-letter { font-size: 2.2rem; line-height: 1; }
+    .grade-ring .g-pts { font-size: 0.68rem; opacity: 0.75; margin-top: 1px; }
+    .gA { background: #dcfce7; color: #166534; }
+    .gB { background: #dbeafe; color: #1e3a8a; }
+    .gC { background: #fef9c3; color: #713f12; }
+    .gD { background: #ffedd5; color: #9a3412; }
+    .gF { background: #fee2e2; color: #991b1b; }
+
+    .score-meta { flex: 1; min-width: 180px; }
+    .score-meta h2 { font-size: 1.2rem; color: var(--green); font-weight: 700; }
+    .score-meta .score-sub { font-size: 0.82rem; color: var(--muted); margin-top: 3px; }
+    .score-meta .score-url { font-size: 0.75rem; color: var(--bronze); margin-top: 5px; word-break: break-all; }
+    .redirect-note { font-size: 0.72rem; color: var(--muted); margin-top: 3px; }
+
+    .score-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    /* ── Section cards ── */
+    .sec {
+      background: white;
+      border-radius: 14px;
+      padding: 22px 24px;
+      box-shadow: var(--shadow);
+      margin-bottom: 12px;
+    }
+    .sec-title {
+      font-size: 0.7rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--green);
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1.5px solid var(--porcelain-dark);
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    /* ── KV grid ── */
+    .kv-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 8px;
+    }
+    .kv {
+      padding: 10px 13px;
+      background: var(--porcelain);
+      border-radius: 9px;
+      font-size: 0.82rem;
+    }
+    .kv .k {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--muted);
+      margin-bottom: 3px;
+    }
+    .kv .v { color: var(--text); line-height: 1.4; }
+    .v.good { color: #166534; }
+    .v.warn { color: var(--orange); }
+    .v.bad  { color: var(--red); }
+    .v.na   { color: var(--muted); }
+
+    /* ── Issues ── */
+    .issue-item {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      padding: 9px 12px;
+      border-radius: 8px;
+      margin-bottom: 5px;
+      font-size: 0.82rem;
+      line-height: 1.4;
+    }
+    .bdg {
+      font-size: 0.65rem;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .bdg-Critical { background: #fee2e2; color: #991b1b; }
+    .bdg-High     { background: #ffedd5; color: #9a3412; }
+    .bdg-Medium   { background: #fef9c3; color: #713f12; }
+    .bdg-Low      { background: #eff6ff; color: #1e40af; }
+    .i-Critical { background: #fff5f5; }
+    .i-High     { background: #fffaf5; }
+    .i-Medium   { background: #fefef5; }
+    .i-Low      { background: #f0f5ff; }
+
+    .issue-type { font-weight: 700; color: var(--text); margin-right: 4px; }
+
+    /* ── Keywords ── */
+    .keyword-row {
+      display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px;
+    }
+    .kw-tag {
+      padding: 4px 11px;
+      background: var(--green-muted);
+      border-radius: 99px;
+      font-size: 0.76rem;
+      color: var(--green-dark);
+    }
+    .kw-tag .kw-pct { color: var(--muted); font-size: 0.7rem; margin-left: 3px; }
+
+    /* ── Script tags ── */
+    .script-pill {
+      display: inline-block;
+      padding: 3px 10px;
+      margin: 3px;
+      background: var(--porcelain-dark);
+      border-radius: 6px;
+      font-size: 0.77rem;
+      color: var(--text);
+    }
+
+    /* ── Misc ── */
+    .hidden { display: none; }
+    .empty-note { font-size: 0.82rem; color: var(--muted); font-style: italic; }
+
+    footer {
+      text-align: center;
+      padding: 32px 20px;
+      font-size: 0.78rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+    footer a { color: var(--green); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 520px) {
+      .form-row { flex-direction: column; }
+      .btn-green { width: 100%; }
+      .score-card { gap: 16px; }
+      .score-actions { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Header ──────────────────────────────────────────────────────────────── -->
+<div class="header">
+  <div class="header-eyebrow">Free Tool by Lagomium</div>
+  <h1>Website SEO Audit</h1>
+  <p>Instant on-page analysis. Find what's hurting your rankings and get a clear action list — no account needed.</p>
+  <div class="header-brand"><a href="https://lagomium.com">lagomium.com</a> · Web &amp; AI consultancy for small business</div>
+</div>
+
+<!-- ── Form ────────────────────────────────────────────────────────────────── -->
+<div class="form-outer">
+  <div class="form-card">
+    <div class="form-row">
+      <div class="fg">
+        <label for="urlInput">Your website URL</label>
+        <input type="url" id="urlInput" placeholder="https://yourwebsite.com" autocomplete="url">
+      </div>
+      <button class="btn btn-green" id="auditBtn" onclick="startAudit()">Audit My Site</button>
+    </div>
+
+    <div class="adv-toggle" onclick="toggleAdv()">
+      <span id="advArrow">▶</span> Add PageSpeed API key for performance scores
+    </div>
+    <div class="adv-panel" id="advPanel">
+      <div class="fg">
+        <label for="psiInput">Google PageSpeed Insights API Key</label>
+        <input type="password" id="psiInput" placeholder="AIza...">
+      </div>
+      <p class="adv-note">Optional. Get a free key at <a href="https://developers.google.com/speed/docs/insights/v5/get-started" target="_blank" rel="noopener">Google's developer console</a>. Without it, the audit still covers ~95% of SEO signals.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ── Results ──────────────────────────────────────────────────────────────── -->
+<div class="results-outer" id="resultsOuter"></div>
+
+<footer>
+  Built by <a href="https://lagomium.com">Lagomium</a> ·
+  Questions or want a full SEO strategy? <a href="mailto:mosijab@gmail.com">Get in touch</a>
+</footer>
+
+<!-- ── Script ───────────────────────────────────────────────────────────────── -->
+<script>
+  function toggleAdv() {
+    const p = document.getElementById('advPanel');
+    const a = document.getElementById('advArrow');
+    p.classList.toggle('open');
+    a.textContent = p.classList.contains('open') ? '▼' : '▶';
+  }
+
+  document.getElementById('urlInput').addEventListener('keydown', e => {
+    if (e.key === 'Enter') startAudit();
+  });
+
+  async function startAudit() {
+    const urlEl  = document.getElementById('urlInput');
+    const psiEl  = document.getElementById('psiInput');
+    const btn    = document.getElementById('auditBtn');
+    const wrap   = document.getElementById('resultsOuter');
+    const url    = urlEl.value.trim();
+    const psiKey = psiEl.value.trim();
+
+    if (!url) { urlEl.focus(); return; }
+
+    btn.disabled = true;
+    btn.textContent = 'Auditing…';
+
+    wrap.innerHTML = `
+      <div class="loading">
+        <div class="spinner"></div>
+        <p>Analysing your site…</p>
+        <p class="loading-url">${esc(url)}</p>
+      </div>`;
+
+    try {
+      const res  = await fetch('/api/audit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url, pagespeedKey: psiKey }),
+      });
+      const data = await res.json();
+      if (data.error) {
+        wrap.innerHTML = `<div class="sec"><p class="bad" style="padding:8px 0">Error: ${esc(data.error)}</p></div>`;
+      } else if (data.scrapeStatus && data.scrapeStatus !== 'Success') {
+        wrap.innerHTML = `<div class="sec"><p class="bad" style="padding:8px 0">${esc(data.scrapeStatus)}</p></div>`;
+      } else {
+        renderReport(data);
+        wrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    } catch (e) {
+      wrap.innerHTML = `<div class="sec"><p class="bad" style="padding:8px 0">Request failed: ${esc(e.message)}</p></div>`;
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Audit My Site';
+    }
+  }
+
+  // ── Render ──────────────────────────────────────────────────────────────────
+  function esc(s) {
+    return String(s ?? '—')
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  function kv(label, val, cls = '') {
+    return `<div class="kv"><div class="k">${label}</div><div class="v ${cls}">${val}</div></div>`;
+  }
+
+  function ok(v, trueStr, falseStr, naStr = '') {
+    if (v === null || v === undefined) return `<span class="na">${naStr || '—'}</span>`;
+    return v
+      ? `<span class="good">✔ ${trueStr}</span>`
+      : `<span class="bad">✘ ${falseStr}</span>`;
+  }
+
+  function renderReport(r) {
+    const wrap = document.getElementById('resultsOuter');
+    const hs   = r.healthScore || {};
+    const grade = hs.grade || '?';
+    const score = hs.score ?? 0;
+    const label = hs.label || '';
+
+    const secs = [];
+
+    // ── Score card ──────────────────────────────────────────────────────────
+    secs.push(`
+      <div class="score-card">
+        <div class="grade-ring g${grade}">
+          <span class="g-letter">${esc(grade)}</span>
+          <span class="g-pts">${score}/100</span>
+        </div>
+        <div class="score-meta">
+          <h2>SEO Health: ${esc(label)}</h2>
+          <div class="score-sub">${score} pts · ${((r.durationMs||0)/1000).toFixed(1)}s · ${esc(r.cms || 'Unknown CMS')}</div>
+          <div class="score-url">${esc(r.finalUrl || r.url)}</div>
+          ${r.wasRedirected ? `<div class="redirect-note">↪ Redirected from ${esc(r.url)}</div>` : ''}
+        </div>
+        <div class="score-actions">
+          <button class="btn btn-ghost" onclick="downloadReport()">⬇ Download .md</button>
+        </div>
+      </div>`);
+
+    // ── Issues ───────────────────────────────────────────────────────────────
+    if (r.issues && r.issues.length) {
+      const issueRows = r.issues.map(i => `
+        <div class="issue-item i-${i.severity}">
+          <span class="bdg bdg-${i.severity}">${esc(i.severity)}</span>
+          <span><span class="issue-type">${esc(i.type)}:</span>${esc(i.message)}</span>
+        </div>`).join('');
+      secs.push(`
+        <div class="sec">
+          <div class="sec-title">⚠ Actionable Issues (${r.issues.length})</div>
+          ${issueRows}
+        </div>`);
+    }
+
+    // ── SEO Tags ─────────────────────────────────────────────────────────────
+    const s = r.seo || {};
+    secs.push(`
+      <div class="sec">
+        <div class="sec-title">🔍 SEO Tags</div>
+        <div class="kv-grid">
+          ${kv('Title', esc(s.title || '—') + (s.titleWarning ? ` <span class="warn">(${esc(s.titleWarning)})</span>` : ''), s.title && !s.titleWarning ? 'good' : s.titleWarning ? 'warn' : 'bad')}
+          ${kv('Title Length', `${s.titleLength} chars`, s.titleWarning ? 'warn' : 'good')}
+          ${kv('Meta Description', s.metaDesc !== null ? esc((s.metaDesc||'').slice(0,90)) + ((s.metaDesc||'').length > 90 ? '…' : '') + (s.metaDescWarning ? ` <span class="warn">(${esc(s.metaDescWarning)})</span>` : '') : '<span class="bad">Missing</span>')}
+          ${kv('Meta Desc Length', `${s.metaDescLength} chars`, s.metaDescWarning ? 'warn' : 'good')}
+          ${kv('Canonical', s.canonical ? esc(s.canonical) + (s.canonicalMismatch ? ' <span class="warn">(mismatch)</span>' : ' <span class="good">✔</span>') : '<span class="na">None set</span>')}
+          ${kv('Indexability', s.isNoIndex ? '<span class="bad">✘ noindex — blocked</span>' : '<span class="good">✔ Indexable</span>')}
+          ${kv('HTTPS', r.isHttps ? '<span class="good">✔ Yes</span>' : '<span class="bad">✘ No</span>')}
+          ${kv('Viewport', r.hasViewport ? '<span class="good">✔ Present</span>' : '<span class="bad">✘ Missing</span>')}
+        </div>
+      </div>`);
+
+    // ── Headings ─────────────────────────────────────────────────────────────
+    const hd = r.headings || {};
+    secs.push(`
+      <div class="sec">
+        <div class="sec-title">📐 Headings</div>
+        <div class="kv-grid">
+          ${kv('H1 Count', hd.h1Count === 1 ? '<span class="good">✔ 1</span>' : hd.h1Count === 0 ? '<span class="bad">✘ Missing</span>' : `<span class="warn">⚠ ${hd.h1Count} (multiple)</span>`)}
+          ${kv('H1 Text', hd.h1 && hd.h1.length ? esc(hd.h1[0].slice(0,70)) : '<span class="na">—</span>')}
+          ${kv('H2 / H3 / H4', `${hd.h2} / ${hd.h3} / ${hd.h4}`)}
+          ${kv('Hierarchy Issues', hd.issues && hd.issues.length ? `<span class="warn">${hd.issues.map(esc).join('; ')}</span>` : '<span class="good">✔ None</span>')}
+        </div>
+      </div>`);
+
+    // ── Content ───────────────────────────────────────────────────────────────
+    const c = r.content || {};
+    const kwTags = (c.topKeywords || []).map(k =>
+      `<span class="kw-tag">${esc(k.word)}<span class="kw-pct">${esc(k.density)}</span></span>`
+    ).join('');
+    secs.push(`
+      <div class="sec">
+        <div class="sec-title">📝 Content & Readability</div>
+        <div class="kv-grid">
+          ${kv('Word Count', `${c.wordCount} — ${esc(c.status)}`, c.wordCount >= 300 ? 'good' : 'warn')}
+          ${kv('Readability', esc((c.readability||{}).gradeLevel || '—'))}
+          ${kv('Flesch Score', (c.readability||{}).fleschScore !== null ? (c.readability.fleschScore) + '/100' : '—')}
+          ${kv('Page Size', r.pageSizeBytes ? Math.round(r.pageSizeBytes / 1024) + ' KB' : '—')}
+        </div>
+        ${kwTags ? `<div class="keyword-row">${kwTags}</div>` : ''}
+      </div>`);
+
+    // ── Images & Links ────────────────────────────────────────────────────────
+    const img = r.images || {};
+    const lnk = r.links || {};
+    secs.push(`
+      <div class="sec">
+        <div class="sec-title">🖼 Images & Links</div>
+        <div class="kv-grid">
+          ${kv('Total Images', img.total ?? 0)}
+          ${kv('Missing Alt Text', img.missingAlt > 0 ? `<span class="bad">✘ ${img.missingAlt}</span>` : '<span class="good">✔ None</span>')}
+          ${kv('Lazy Loaded', `${img.lazyLoaded} / ${img.total}`)}
+          ${kv('Legacy Formats (non-WebP)', img.legacyFormats ?? 0, img.legacyFormats > 0 ? 'warn' : '')}
+          ${kv('Internal Links', lnk.internal ?? 0)}
+          ${kv('External Links', lnk.external ?? 0)}
+          ${kv('Malformed Links', lnk.malformed > 0 ? `<span class="warn">${lnk.malformed}</span>` : '<span class="good">✔ None</span>')}
+        </div>
+      </div>`);
+
+    // ── Schema & Social ───────────────────────────────────────────────────────
+    const sc = r.schema || {};
+    const og = (r.seo||{}).og || {};
+    const tw = (r.seo||{}).twitter || {};
+    const hl = (r.seo||{}).hreflang || [];
+    secs.push(`
+      <div class="sec">
+        <div class="sec-title">🔗 Schema & Social Meta</div>
+        <div class="kv-grid">
+          ${kv('Structured Data (JSON-LD)', sc.found ? `<span class="good">✔ ${esc(sc.types.join(', '))}</span>` : '<span class="bad">✘ None found</span>')}
+          ${kv('og:title', og.title ? `<span class="good">✔</span> ${esc(og.title.slice(0,50))}` : '<span class="bad">✘ Missing</span>')}
+          ${kv('og:description', og.description ? '<span class="good">✔ Present</span>' : '<span class="bad">✘ Missing</span>')}
+          ${kv('og:image', og.image ? '<span class="good">✔ Present</span>' : '<span class="bad">✘ Missing</span>')}
+          ${kv('Twitter Card', tw.card ? `<span class="good">✔ ${esc(tw.card)}</span>` : '<span class="na">— None</span>')}
+          ${kv('Hreflang', hl.length ? esc(hl.join(', ')) : '<span class="na">— None</span>')}
+        </div>
+      </div>`);
+
+    // ── Local Signals ─────────────────────────────────────────────────────────
+    const ls = r.localSignals || {};
+    secs.push(`
+      <div class="sec">
+        <div class="sec-title">📍 Local SEO Signals</div>
+        <div class="kv-grid">
+          ${kv('Phone Number Detected', ls.hasPhone ? '<span class="good">✔ Found</span>' : '<span class="na">— Not detected</span>')}
+          ${kv('Address Detected', ls.hasAddress ? '<span class="good">✔ Found</span>' : '<span class="na">— Not detected</span>')}
+        </div>
+      </div>`);
+
+    // ── Infrastructure ────────────────────────────────────────────────────────
+    const inf = r.infrastructure || {};
+    const rb  = inf.robotsTxt || {};
+    const sm  = inf.sitemap || {};
+    secs.push(`
+      <div class="sec">
+        <div class="sec-title">⚙ Site Infrastructure</div>
+        <div class="kv-grid">
+          ${kv('robots.txt', rb.found ? `<span class="good">✔ Found</span>${rb.sitemapDeclared ? ' · sitemap declared' : ''}${rb.disallowCount ? ` · ${rb.disallowCount} disallow rules` : ''}` : '<span class="bad">✘ Missing</span>')}
+          ${kv('XML Sitemap', sm.found ? `<span class="good">✔ ${sm.urlCount} URLs</span> <span class="na">(${esc(sm.path)})</span>` : '<span class="bad">✘ Not found</span>')}
+          ${kv('Redirect on Load', r.wasRedirected ? `<span class="warn">⚠ Yes → ${esc(r.finalUrl)}</span>` : '<span class="good">✔ None</span>')}
+          ${kv('HTTP Status', r.httpStatus ?? '—')}
+          ${kv('CMS', esc(r.cms || '—'))}
+        </div>
+      </div>`);
+
+    // ── Third-party Scripts ───────────────────────────────────────────────────
+    const tp = r.thirdPartyScripts || [];
+    if (tp.length) {
+      secs.push(`
+        <div class="sec">
+          <div class="sec-title">📦 Third-Party Scripts (${tp.length})</div>
+          <div>${tp.map(s => `<span class="script-pill">${esc(s)}</span>`).join('')}</div>
+        </div>`);
+    }
+
+    // ── Performance ───────────────────────────────────────────────────────────
+    const perf = r.performance;
+    if (perf && !perf.error) {
+      secs.push(`
+        <div class="sec">
+          <div class="sec-title">⚡ Performance · Mobile (PageSpeed Insights)</div>
+          <div class="kv-grid">
+            ${kv('Performance Score', `${perf.score}/100`, perf.score >= 75 ? 'good' : perf.score >= 50 ? 'warn' : 'bad')}
+            ${kv('LCP', esc(perf.lcp || '—'), perf.lcpMs < 2500 ? 'good' : perf.lcpMs < 4000 ? 'warn' : 'bad')}
+            ${kv('CLS', esc(perf.cls || '—'))}
+            ${kv('FCP', esc(perf.fcp || '—'))}
+            ${kv('TTFB', esc(perf.ttfb || '—'))}
+            ${perf.inp ? kv('INP', esc(perf.inp)) : ''}
+            ${perf.tbt ? kv('TBT', esc(perf.tbt)) : ''}
+          </div>
+        </div>`);
+    } else if (perf && perf.error) {
+      secs.push(`
+        <div class="sec">
+          <div class="sec-title">⚡ Performance</div>
+          <p class="empty-note">PageSpeed skipped: ${esc(perf.error)}</p>
+        </div>`);
+    }
+
+    wrap.innerHTML = secs.join('');
+    window.__lastReport = r;
+  }
+
+  // ── Download .md ────────────────────────────────────────────────────────────
+  function downloadReport() {
+    const r = window.__lastReport;
+    if (!r) return;
+    const hs = r.healthScore || {};
+    const s  = r.seo || {};
+    const hd = r.headings || {};
+    const c  = r.content || {};
+    const og = s.og || {};
+
+    const lines = [
+      `# SEO Audit Report — ${r.url}`,
+      `**Audited:** ${r.auditedAt}  `,
+      `**CMS:** ${r.cms || '—'}  `,
+      `**Duration:** ${((r.durationMs||0)/1000).toFixed(1)}s`,
+      ``,
+      `## Health Score: ${hs.grade || '?'} — ${hs.score ?? 0}/100 (${hs.label || ''})`,
+      ``,
+      `## Issues`,
+      ...(r.issues || []).map(i => `- **[${i.severity}] ${i.type}:** ${i.message}`),
+      ``,
+      `## SEO Tags`,
+      `- **Title:** ${s.title || 'MISSING'} (${s.titleLength} chars${s.titleWarning ? ' — ' + s.titleWarning : ''})`,
+      `- **Meta Desc:** ${s.metaDesc ?? 'MISSING'} (${s.metaDescLength} chars${s.metaDescWarning ? ' — ' + s.metaDescWarning : ''})`,
+      `- **Canonical:** ${s.canonical || 'None'}${s.canonicalMismatch ? ' ⚠ MISMATCH' : ''}`,
+      `- **Indexable:** ${s.isNoIndex ? 'NO — noindex found' : 'Yes'}`,
+      `- **HTTPS:** ${r.isHttps ? 'Yes' : 'NO'}`,
+      `- **Viewport:** ${r.hasViewport ? 'Present' : 'MISSING'}`,
+      ``,
+      `## Headings`,
+      `- **H1 (${hd.h1Count}):** ${(hd.h1 || []).join(' | ') || 'MISSING'}`,
+      `- H2: ${hd.h2}, H3: ${hd.h3}, H4: ${hd.h4}`,
+      ...(hd.issues || []).map(i => `- ⚠ ${i}`),
+      ``,
+      `## Content`,
+      `- **Words:** ${c.wordCount} (${c.status})`,
+      `- **Readability:** ${(c.readability||{}).gradeLevel} (Flesch ${(c.readability||{}).fleschScore})`,
+      `- **Top Keywords:** ${(c.topKeywords||[]).map(k => k.word + ' ' + k.density).join(', ')}`,
+      ``,
+      `## Images`,
+      `- Total: ${(r.images||{}).total}, Missing alt: ${(r.images||{}).missingAlt}, Lazy: ${(r.images||{}).lazyLoaded}, Legacy formats: ${(r.images||{}).legacyFormats}`,
+      ``,
+      `## Schema & Social`,
+      `- **Structured data:** ${(r.schema||{}).found ? (r.schema.types||[]).join(', ') : 'None'}`,
+      `- og:title: ${og.title || 'Missing'}`,
+      `- og:description: ${og.description ? 'Present' : 'Missing'}`,
+      `- og:image: ${og.image || 'Missing'}`,
+      ``,
+      `## Local Signals`,
+      `- Phone detected: ${(r.localSignals||{}).hasPhone ? 'Yes' : 'No'}`,
+      `- Address detected: ${(r.localSignals||{}).hasAddress ? 'Yes' : 'No'}`,
+      ``,
+      `## Infrastructure`,
+      `- robots.txt: ${((r.infrastructure||{}).robotsTxt||{}).found ? 'Found' : 'Missing'}`,
+      `- Sitemap: ${((r.infrastructure||{}).sitemap||{}).found ? (r.infrastructure.sitemap.urlCount + ' URLs') : 'Not found'}`,
+      `- Redirect: ${r.wasRedirected ? 'Yes → ' + r.finalUrl : 'None'}`,
+      ``,
+      `## Third-Party Scripts`,
+      (r.thirdPartyScripts||[]).length ? (r.thirdPartyScripts||[]).map(s => `- ${s}`).join('\n') : '- None detected',
+      ``,
+      ...(r.performance && !r.performance.error ? [
+        `## Performance (Mobile)`,
+        `- Score: ${r.performance.score}/100`,
+        `- LCP: ${r.performance.lcp}`,
+        `- CLS: ${r.performance.cls}`,
+        `- FCP: ${r.performance.fcp}`,
+        `- TTFB: ${r.performance.ttfb}`,
+        r.performance.inp ? `- INP: ${r.performance.inp}` : '',
+        ``,
+      ] : []),
+      `---`,
+      `Generated by [Lagomium Free SEO Audit](https://lagomium.com/audit)`,
+    ];
+
+    const md   = lines.join('\n');
+    const blob = new Blob([md], { type: 'text/markdown' });
+    const a    = document.createElement('a');
+    a.href     = URL.createObjectURL(blob);
+    try {
+      a.download = `seo-audit-${new URL(r.url).hostname}-${new Date().toISOString().split('T')[0]}.md`;
+    } catch (e) {
+      a.download = `seo-audit.md`;
+    }
+    a.click();
+  }
+</script>
+</body>
+</html>
