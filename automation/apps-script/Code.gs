@@ -24,7 +24,7 @@ function doPost(e) {
     const email = clean_(body.email,180).toLowerCase();
     const message = clean_(body.message,1000);
     const source = clean_(body.source || 'website',100);
-    if (!name || !message || !/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email))
+    if (!name || !message || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
       return json_({ok:false,error:'invalid input'});
     const sheetId = props.getProperty('SHEET_ID');
     const alertTo = props.getProperty('ALERT_EMAIL');
@@ -53,7 +53,7 @@ function doPost(e) {
       MailApp.sendEmail({
         to: alertTo,
         subject: 'New website inquiry received',
-        body: 'Name: '+name+'\\nEmail: '+email+'\\nMessage: '+message+'\\nSource: '+source
+        body: 'Name: '+name+'\nEmail: '+email+'\nMessage: '+message+'\nSource: '+source
       });
       sent = true;
     } catch (err) {
